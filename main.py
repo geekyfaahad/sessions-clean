@@ -15,8 +15,14 @@ directories = [
     rf'C:\Users\{username}\AppData\Local\Google\Chrome\User Data\Profile 2\Sessions'
 ]
 for directory_path in directories:
-    for filename in os.listdir(directory_path):
-        file_path = os.path.join(directory_path, filename)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
-            print(f'Deleted {file_path}')
+    try:
+        if os.path.exists(directory_path):  # Check if the directory exists
+            for filename in os.listdir(directory_path):
+                file_path = os.path.join(directory_path, filename)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                    print(f'Deleted {file_path}')
+        else:
+            print(f"Folder not created yet: {directory_path}")
+    except Exception as e:
+        print(f"Error accessing {directory_path}: {e}")
