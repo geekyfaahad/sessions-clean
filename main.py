@@ -22,6 +22,7 @@ for directory_path in directories:
                 if os.path.isfile(file_path):
                     os.remove(file_path)
                     print(f'Deleted {file_path}')
+                    sleep(0.5)
         else:
             print(f"Folder not created yet: {directory_path}")
     except Exception as e:
